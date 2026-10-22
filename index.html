@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101b33">
+<meta name="description" content="Financial Daily — market intelligence, research, and financial news.">
+<title>Financial Daily — Think Beyond. Build Beyond.</title>
+<style>
+:root{--navy:#101b33;--navy2:#172746;--blue:#356df3;--blue2:#eaf0ff;--ink:#182338;--muted:#68758b;--line:#e5eaf2;--bg:#f4f7fb;--white:#fff;--green:#13845b;--red:#c84949;--shadow:0 8px 28px rgba(20,38,70,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}
+.topbar{height:68px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px;gap:18px;position:sticky;top:0;z-index:10;box-shadow:0 4px 16px #07112420}
+.brand{display:flex;align-items:center;gap:11px;min-width:205px}.brandmark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#4c83ff,#2354d9);display:grid;place-items:center;font-weight:900;letter-spacing:-1px}.brandname{font-size:16px;font-weight:800;letter-spacing:.2px}.brandslogan{font-size:10px;color:#aebbd3;letter-spacing:1.3px;text-transform:uppercase}
+.desktopnav{display:flex;align-items:center;gap:5px;overflow:auto}.navbtn{border:0;background:transparent;color:#c6d0e1;padding:10px 11px;border-radius:9px;white-space:nowrap;font-size:12px}.navbtn:hover,.navbtn.active{background:#ffffff14;color:#fff}.topright{display:flex;align-items:center;gap:10px}.status{font-size:11px;color:#c8d4e7;display:flex;align-items:center;gap:7px;white-space:nowrap}.dot{width:7px;height:7px;border-radius:50%;background:#e4b35c;display:inline-block}.menu-toggle{display:none;border:1px solid #ffffff35;color:#fff;background:transparent;border-radius:9px;padding:8px 10px}
+.mobilemenu{display:none;background:var(--navy2);padding:8px 14px 14px;position:sticky;top:68px;z-index:9}.mobilemenu.open{display:grid;grid-template-columns:1fr 1fr;gap:7px}.mobilemenu .navbtn{text-align:left;background:#ffffff0c;padding:12px;white-space:normal}
+main{max-width:1440px;margin:auto;padding:26px}.welcome{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:22px}.eyebrow{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase}.welcome h1{font-size:clamp(25px,3vw,34px);letter-spacing:-1.2px;margin:5px 0 4px}.welcome p{margin:0;color:var(--muted);font-size:13px}.datepill{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 13px;color:var(--muted);font-size:12px;white-space:nowrap}
+.notice{display:flex;gap:10px;align-items:flex-start;background:#fff8e8;border:1px solid #f4dfac;color:#77561c;border-radius:12px;padding:12px 14px;margin-bottom:20px;font-size:12px}.notice strong{display:block;margin-bottom:2px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.card{background:var(--white);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.kpi{padding:17px 18px;min-width:0}.kpihead{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;gap:8px}.kpiicon{width:30px;height:30px;border-radius:9px;background:var(--blue2);color:var(--blue);display:grid;place-items:center;font-weight:800}.kpivalue{font-size:25px;font-weight:800;letter-spacing:-.8px;margin:11px 0 4px;white-space:nowrap}.kpisub{font-size:11px;color:var(--muted)}.pending{color:#a27623;background:#fff5dd;border-radius:5px;padding:3px 6px;font-size:10px;font-weight:700}
+.contentgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:16px;margin-bottom:18px}.panelhead{padding:17px 19px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px}.panelhead h2{margin:0;font-size:14px;letter-spacing:-.2px}.panelhead p{margin:3px 0 0;color:var(--muted);font-size:11px}.tag{font-size:10px;font-weight:700;border-radius:6px;padding:5px 7px;background:#f0f3f8;color:#647189;white-space:nowrap}.chartarea{padding:16px 18px 13px}.charttop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.chartprice{font-size:25px;font-weight:800;letter-spacing:-.7px}.chartnote{color:var(--muted);font-size:11px;margin-top:3px}.charttabs{display:flex;gap:3px;background:#f2f5fa;padding:3px;border-radius:8px}.charttabs button{border:0;background:transparent;border-radius:6px;color:var(--muted);padding:5px 8px;font-size:10px}.charttabs button.active{background:#fff;color:var(--blue);box-shadow:0 1px 4px #10204012}.chartsvg{width:100%;height:200px;display:block;margin-top:14px}.chartfoot{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;padding-top:6px}
+.marketlist{padding:0 18px 7px}.marketrow{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid #edf0f5}.marketrow:last-child{border-bottom:0}.coin{width:32px;height:32px;border-radius:50%;background:#eef2fa;color:#263c63;display:grid;place-items:center;font-weight:800;font-size:11px}.assetname{font-weight:750;font-size:12px}.assetsub{font-size:10px;color:var(--muted);margin-top:2px}.assetprice{text-align:right;font-weight:750;font-size:12px}.assetchange{text-align:right;font-size:10px;color:var(--muted);margin-top:2px}.sectiongrid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:14px}.minihead{padding:16px 17px 12px;border-bottom:1px solid var(--line)}.minihead h3{font-size:13px;margin:0}.minihead p{font-size:11px;color:var(--muted);margin:3px 0 0}.feeditem{padding:14px 17px;border-bottom:1px solid #edf0f5}.feeditem:last-child{border-bottom:0}.feedmeta{display:flex;gap:7px;align-items:center;font-size:10px;color:var(--muted);margin-bottom:5px}.category{color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.5px}.feeditem h4{font-size:12px;line-height:1.5;margin:0 0 5px}.feeditem p{font-size:11px;color:var(--muted);margin:0}.toolitem{display:flex;gap:10px;align-items:flex-start;padding:13px 17px;border-bottom:1px solid #edf0f5}.toolitem:last-child{border-bottom:0}.toolicon{width:29px;height:29px;border-radius:8px;background:#edf2ff;color:var(--blue);display:grid;place-items:center;font-weight:800;flex-shrink:0}.toolitem strong{font-size:12px;display:block}.toolitem span{font-size:11px;color:var(--muted);display:block;margin-top:2px}.moduleview{display:none}.moduleview.active{display:block}.moduleintro{background:var(--navy);color:#fff;border-radius:16px;padding:26px;margin-bottom:17px;position:relative;overflow:hidden}.moduleintro:after{content:"";position:absolute;width:200px;height:200px;border:1px solid #ffffff18;border-radius:50%;right:-45px;top:-80px;box-shadow:0 0 0 28px #ffffff08,0 0 0 58px #ffffff05}.moduleintro .eyebrow{color:#8fb0ff}.moduleintro h2{font-size:25px;margin:5px 0}.moduleintro p{color:#c2cde0;max-width:650px;margin:0;font-size:13px}.modulecards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.modulecard{padding:18px}.modulecard h3{font-size:13px;margin:11px 0 5px}.modulecard p{font-size:12px;color:var(--muted);margin:0}.modulecard .toolicon{width:36px;height:36px}.coming{display:inline-block;margin-top:13px;background:#fff5dd;color:#94691b;border-radius:6px;padding:4px 7px;font-size:10px;font-weight:800}
+footer{padding:25px 26px 32px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);margin-top:28px}.footbrand{font-weight:800;color:var(--ink)}
+@media(max-width:1120px){.desktopnav{display:none}.menu-toggle{display:block}.topbar{padding:0 18px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.contentgrid{grid-template-columns:minmax(0,1.2fr) minmax(270px,1fr)}.sectiongrid{grid-template-columns:1fr 1fr}.sectiongrid .card:last-child{grid-column:1/-1}}
+@media(max-width:720px){main{padding:18px 13px}.topbar{height:62px;padding:0 13px}.brand{min-width:0}.brandslogan{font-size:9px}.status{display:none}.mobilemenu{top:62px}.welcome{align-items:flex-start;flex-direction:column}.datepill{display:none}.kpis{gap:9px}.kpi{padding:13px}.kpivalue{font-size:21px}.kpihead{font-size:11px}.kpiicon{width:27px;height:27px}.contentgrid,.sectiongrid,.modulecards{grid-template-columns:1fr}.sectiongrid .card:last-child{grid-column:auto}.chartsvg{height:170px}.panelhead{padding:15px}.chartarea{padding:14px}.moduleintro{padding:21px}.moduleintro h2{font-size:22px}footer{padding:22px 14px;flex-direction:column}.welcome h1{font-size:27px}}
+@media(max-width:360px){.kpis{grid-template-columns:1fr}.mobilemenu.open{grid-template-columns:1fr}.brandname{font-size:14px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="Financial Daily beranda" data-page="dashboard">
+    <span class="brandmark">FD</span><span><span class="brandname">Financial Daily</span><span class="brandslogan" style="display:block">Think Beyond. Build Beyond.</span></span>
+  </a>
+  <nav class="desktopnav" aria-label="Navigasi utama">
+    <button class="navbtn active" data-page="dashboard">Analyst Dashboard</button>
+    <button class="navbtn" data-page="charting">Advanced Charting</button>
+    <button class="navbtn" data-page="calendar">Events Calendar</button>
+    <button class="navbtn" data-page="research">Research Tools</button>
+    <button class="navbtn" data-page="alerts">Whale Alerts</button>
+    <button class="navbtn" data-page="workspace">Workspace</button>
+  </nav>
+  <div class="topright"><span class="status"><span class="dot"></span> Prototype · data belum live</span><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="Buka menu">Menu ☰</button></div>
+</header>
+<nav class="mobilemenu" id="mobileMenu" aria-label="Navigasi mobile">
+  <button class="navbtn active" data-page="dashboard">Analyst Dashboard</button>
+  <button class="navbtn" data-page="charting">Advanced Charting</button>
+  <button class="navbtn" data-page="calendar">Events Calendar</button>
+  <button class="navbtn" data-page="research">Research Tools</button>
+  <button class="navbtn" data-page="alerts">Whale Alerts</button>
+  <button class="navbtn" data-page="workspace">Workspace</button>
+</nav>
+<main>
+<section class="moduleview active" id="page-dashboard">
+  <div class="welcome"><div><div class="eyebrow">Market intelligence platform</div><h1>Good morning, market watcher.</h1><p>Ringkasan pasar, riset, dan sinyal penting dalam satu tempat.</p></div><div class="datepill" id="todayLabel">Market overview · Indonesia first</div></div>
+  <div class="notice"><span>!</span><div><strong>Mode prototype — belum terhubung ke data pasar live.</strong>Angka dan grafik di bawah adalah contoh tampilan, bukan harga aktual atau rekomendasi investasi.</div></div>
+  <div class="kpis">
+    <article class="card kpi"><div class="kpihead"><span>IHSG</span><span class="kpiicon">IDX</span></div><div class="kpivalue">—</div><div class="kpisub">Menunggu koneksi data resmi</div></article>
+    <article class="card kpi"><div class="kpihead"><span>USD / IDR</span><span class="kpiicon">$</span></div><div class="kpivalue">—</div><div class="kpisub">Menunggu koneksi data FX</div></article>
+    <article class="card kpi"><div class="kpihead"><span>Bitcoin (BTC)</span><span class="kpiicon">₿</span></div><div class="kpivalue">—</div><div class="kpisub">Menunggu koneksi harga live</div></article>
+    <article class="card kpi"><div class="kpihead"><span>Market sentiment</span><span class="kpiicon">◷</span></div><div class="kpivalue" style="font-size:20px">Belum tersedia</div><div class="kpisub">Sumber data belum dihubungkan</div></article>
+  </div>
+  <div class="contentgrid">
+    <article class="card">
+      <div class="panelhead"><div><h2>Market Pulse</h2><p>Grafik demonstrasi · bukan data aktual</p></div><span class="tag">DEMO CHART</span></div>
+      <div class="chartarea"><div class="charttop"><div><div class="chartprice">Market overview</div><div class="chartnote">Grafik akan aktif setelah integrasi data</div></div><div class="charttabs"><button class="active" type="button">1D</button><button type="button">1W</button><button type="button">1M</button></div></div>
+        <svg class="chartsvg" viewBox="0 0 620 200" preserveAspectRatio="none" role="img" aria-label="Grafik ilustrasi tanpa data pasar">
+          <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#356df3" stop-opacity=".22"/><stop offset="1" stop-color="#356df3" stop-opacity="0"/></linearGradient></defs>
+          <g stroke="#e9edf4" stroke-width="1"><path d="M0 25H620M0 65H620M0 105H620M0 145H620M0 185H620"/></g>
+          <path d="M0 143 C25 132 35 150 58 124 S95 131 116 99 S149 112 176 88 S212 106 240 78 S278 94 303 67 S340 81 367 56 S402 76 430 48 S466 70 492 43 S528 55 552 33 S590 50 620 23 L620 190 L0 190Z" fill="url(#area)"/>
+          <path d="M0 143 C25 132 35 150 58 124 S95 131 116 99 S149 112 176 88 S212 106 240 78 S278 94 303 67 S340 81 367 56 S402 76 430 48 S466 70 492 43 S528 55 552 33 S590 50 620 23" fill="none" stroke="#356df3" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="310" y="115" text-anchor="middle" font-size="13" fill="#7b879b">Ilustrasi visual — belum ada feed pasar</text>
+        </svg><div class="chartfoot"><span>Data belum tersedia</span><span>Financial Daily · Prototype</span></div>
+      </div>
+    </article>
+    <article class="card"><div class="panelhead"><div><h2>Watchlist</h2><p>Aset yang akan dipantau</p></div><span class="tag">BELUM LIVE</span></div>
+      <div class="marketlist">
+        <div class="marketrow"><div class="coin">IDX</div><div><div class="assetname">IHSG</div><div class="assetsub">Indonesia equities</div></div><div class="assetprice">—<div class="assetchange">Belum terhubung</div></div></div>
+        <div class="marketrow"><div class="coin">₿</div><div><div class="assetname">Bitcoin</div><div class="assetsub">BTC / USD</div></div><div class="assetprice">—<div class="assetchange">Belum terhubung</div></div></div>
+        <div class="marketrow"><div class="coin">Ξ</div><div><div class="assetname">Ethereum</div><div class="assetsub">ETH / USD</div></div><div class="assetprice">—<div class="assetchange">Belum terhubung</div></div></div>
+        <div class="marketrow"><div class="coin">$</div><div><div class="assetname">USD / IDR</div><div class="assetsub">Rupiah exchange rate</div></div><div class="assetprice">—<div class="assetchange">Belum terhubung</div></div></div>
+        <div class="marketrow"><div class="coin">SUN</div><div><div class="assetname">Surat Utang Negara</div><div class="assetsub">Indonesian government bonds</div></div><div class="assetprice">—<div class="assetchange">Belum terhubung</div></div></div>
+      </div>
+    </article>
+  </div>
+  <div class="sectiongrid">
+    <article class="card"><div class="minihead"><h3>Indonesia First · Newsroom</h3><p>Slot berita akan diisi setelah feed terverifikasi</p></div>
+      <div class="feeditem"><div class="feedmeta"><span class="category">Indonesia Market</span><span>•</span><span>Feed belum terhubung</span></div><h4>Berita pasar Indonesia akan tampil di sini</h4><p>Prioritas: IHSG, emiten, rupiah, Bank Indonesia, OJK, dan BEI.</p></div>
+      <div class="feeditem"><div class="feedmeta"><span class="category">Global Macro</span><span>•</span><span>Feed belum terhubung</span></div><h4>Global market developments</h4><p>Fokus pada dampak terhadap Indonesia, aset global, dan kripto.</p></div>
+    </article>
+    <article class="card"><div class="minihead"><h3>Upcoming Events</h3><p>Economic &amp; earnings calendar</p></div>
+      <div class="feeditem"><div class="feedmeta"><span class="category">Calendar</span><span>Belum tersedia</span></div><h4>Kalender ekonomi belum dihubungkan</h4><p>Rilis data dan jadwal emiten akan ditampilkan setelah sumber diverifikasi.</p></div>
+      <div class="feeditem"><div class="feedmeta"><span class="category">Reminder</span><span>Belum tersedia</span></div><h4>Pengingat event belum aktif</h4><p>Fitur notifikasi memerlukan penyimpanan dan layanan backend.</p></div>
+    </article>
+    <article class="card"><div class="minihead"><h3>Analyst Toolkit</h3><p>Tools untuk workflow riset</p></div>
+      <div class="toolitem"><div class="toolicon">↗</div><div><strong>Charting &amp; Screener</strong><span>Analisis teknikal dan penyaringan aset.</span></div></div>
+      <div class="toolitem"><div class="toolicon">⌁</div><div><strong>Research Workspace</strong><span>Ruang catatan dan ide analis.</span></div></div>
+      <div class="toolitem"><div class="toolicon">◎</div><div><strong>Alerts &amp; Monitoring</strong><span>Peringatan saat fitur backend tersedia.</span></div></div>
+    </article>
+  </div>
+</section>
+<section class="moduleview" id="page-charting">
+  <div class="moduleintro"><div class="eyebrow">Module 02</div><h2>Advanced Charting &amp; Screener</h2><p>Analisis pergerakan harga, bandingkan aset, dan temukan kandidat berdasarkan kriteria yang terukur.</p></div>
+  <div class="modulecards">
+    <article class="card modulecard"><div class="toolicon">⌁</div><h3>Advanced Charts</h3><p>Rencana fitur: grafik candlestick, indikator teknikal, timeframe, dan pembanding aset.</p><span class="coming">BELUM DIBANGUN</span></article>
+    <article class="card modulecard"><div class="toolicon">⌕</div><h3>Market Screener</h3><p>Rencana fitur: filter harga, volume, perubahan harian, dan kategori aset.</p><span class="coming">BELUM DIBANGUN</span></article>
+    <article class="card modulecard"><div class="toolicon">⇄</div><h3>Asset Comparison</h3><p>Rencana fitur: perbandingan performa, volatilitas, dan metrik lintas aset.</p><span class="coming">BELUM DIBANGUN</span></article>
+  </div>
+</section>
+<section class="moduleview" id="page-calendar">
+  <div class="moduleintro"><div class="eyebrow">Module 03</div><h2>Economic &amp; Earnings Calendar</h2><p>Kalender peristiwa ekonomi dan laporan emiten agar analis dapat menyiapkan skenario sebelum katalis terjadi.</p></div>
+  <div class="modulecards">
+    <article class="card modulecard"><div class="toolicon">◷</div><h3>Economic Calendar</h3><p>Rencana fitur: inflasi, suku bunga, tenaga kerja, dan rilis data Indonesia serta global.</p><span class="coming">BELUM TERHUBUNG</span></article>
+    <article class="card modulecard"><div class="toolicon">▤</div><h3>Earnings Calendar</h3><p>Rencana fitur: jadwal laporan keuangan, aksi korporasi, dan pengumuman emiten.</p><span class="coming">BELUM TERHUBUNG</span></article>
+    <article class="card modulecard"><div class="toolicon">◉</div><h3>Event Impact Notes</h3><p>Rencana fitur: catatan konsensus, hasil aktual, dan dampak ke pasar.</p><span class="coming">BELUM DIBANGUN</span></article>
+  </div>
+</section>
+<section class="moduleview" id="page-research">
+  <div class="moduleintro"><div class="eyebrow">Module 04</div><h2>Research Tools</h2><p>Peralatan untuk membantu riset fundamental, analisis makro, dan penilaian risiko dengan sumber yang dapat ditelusuri.</p></div>
+  <div class="modulecards">
+    <article class="card modulecard"><div class="toolicon">▦</div><h3>Fundamental Analysis</h3><p>Rencana fitur: rasio keuangan, pertumbuhan, margin, dan valuasi emiten.</p><span class="coming">BELUM DIBANGUN</span></article>
+    <article class="card modulecard"><div class="toolicon">⌁</div><h3>Macro Monitor</h3><p>Rencana fitur: suku bunga, inflasi, obligasi, nilai tukar, dan likuiditas.</p><span class="coming">BELUM DIBANGUN</span></article>
+    <article class="card modulecard"><div class="toolicon">✓</div><h3>Source &amp; Data Checks</h3><p>Rencana fitur: sumber, waktu pembaruan, kelengkapan, dan status kualitas data.</p><span class="coming">BELUM DIBANGUN</span></article>
+  </div>
+</section>
+<section class="moduleview" id="page-alerts">
+  <div class="moduleintro"><div class="eyebrow">Module 05</div><h2>Alerts &amp; Monitoring</h2><p>Pantau perubahan yang berarti tanpa harus memeriksa setiap aset dan indikator sepanjang hari.</p></div>
+  <div class="modulecards">
+    <article class="card modulecard"><div class="toolicon">⚑</div><h3>Price Alerts</h3><p>Rencana fitur: ambang harga, perubahan persentase, dan volume tidak biasa.</p><span class="coming">BELUM AKTIF</span></article>
+    <article class="card modulecard"><div class="toolicon">◉</div><h3>Market Monitoring</h3><p>Rencana fitur: pantauan volatilitas, makro, arus dana, dan berita penting.</p><span class="coming">BELUM AKTIF</span></article>
+    <article class="card modulecard"><div class="toolicon">♧</div><h3>Notification Settings</h3><p>Notifikasi nyata memerlukan backend, aturan penyimpanan, dan kanal pengiriman.</p><span class="coming">BELUM AKTIF</span></article>
+  </div>
+</section>
+<section class="moduleview" id="page-workspace">
+  <div class="moduleintro"><div class="eyebrow">Module 06</div><h2>Research Workspace</h2><p>Tempat menyusun tesis, mengumpulkan sumber, mencatat katalis, dan menyimpan hasil analisis.</p></div>
+  <div class="modulecards">
+    <article class="card modulecard"><div class="toolicon">✎</div><h3>Analyst Notes</h3><p>Rencana fitur: catatan riset terstruktur, asumsi, dan kesimpulan.</p><span class="coming">BELUM AKTIF</span></article>
+    <article class="card modulecard"><div class="toolicon">▤</div><h3>Research Library</h3><p>Rencana fitur: kumpulan laporan, sumber, dan catatan per aset.</p><span class="coming">BELUM AKTIF</span></article>
+    <article class="card modulecard"><div class="toolicon">⇧</div><h3>Export &amp; Share</h3><p>Rencana fitur: ekspor ringkasan riset untuk tim dan publikasi.</p><span class="coming">BELUM AKTIF</span></article>
+  </div>
+</section>
+<footer><div><div class="footbrand">Financial Daily</div><div>Think Beyond. Build Beyond.</div></div><div>Prototype v1 · Angka pasar tidak ditampilkan sebelum sumber data diverifikasi.</div></footer>
+</main>
+<script>
+(function(){
+  const buttons = document.querySelectorAll('[data-page]');
+  const pages = document.querySelectorAll('.moduleview');
+  const menu = document.getElementById('mobileMenu');
+  const toggle = document.getElementById('menuToggle');
+  function showPage(name){
+    pages.forEach(p=>p.classList.toggle('active',p.id==='page-'+name));
+    buttons.forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  buttons.forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+  toggle.addEventListener('click',()=>{
+    const open=menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',String(open));
+  });
+  const d=new Date();
+  document.getElementById('todayLabel').textContent='Market overview · '+new Intl.DateTimeFormat('id-ID',{day:'numeric',month:'long',year:'numeric'}).format(d);
+  document.querySelectorAll('.charttabs button').forEach(btn=>btn.addEventListener('click',()=>{
+    document.querySelectorAll('.charttabs button').forEach(b=>b.classList.toggle('active',b===btn));
+  }));
+})();
+</script>
+</body>
+</html>
