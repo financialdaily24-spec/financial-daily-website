@@ -1,0 +1,89 @@
+
+name: Update Crypto News
+
+on:
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: crypto-news-update
+  cancel-in-progress: false
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch crypto news
+        run: |
+          set -e
+          curl --fail --silent --show-error \
+            --max-time 30 \
+            --retry 2 \
+            --retry-delay 3 \
+            "https://cryptocurrency.cv/api/news?limit=3" \
+            -o news.json
+
+      - name: Validate news data
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("news.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+
+          if not isinstance(data, dict):
+              raise SystemExit("Invalid response: expected a JSON object")
+
+          articles = data.get("articles")
+
+          if not isinstance(articles, list) or not articles:
+              raise SystemExit("No articles found; update cancelled")
+
+          required = ("title", "source", "link", "pubDate")
+
+          for i, article in enumerate(articles, start=1):
+              if not isinstance(article, dict):
+                  raise SystemExit(f"Article {i} is not an object")
+
+              missing = [
+                  key for key in required
+                  if not isinstance(article.get(key), str)
+                  or not article[key].strip()
+              ]
+
+              if missing:
+                  raise SystemExit(
+                      f"Article {i} missing fields: {', '.join(missing)}"
+                  )
+
+              if not article["link"].startswith(("https://", "http://")):
+                  raise SystemExit(f"Article {i} has an invalid link")
+
+          print(f"Validated {len(articles)} articles")
+
+          PY
+
+      - name: Commit news data if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add news.json
+
+          if ! git diff --cached --quiet; then
+            git commit -m "Update crypto news feed"
+            git push
+          else
+            echo "News data unchanged; no commit needed."
+          fi
+          
